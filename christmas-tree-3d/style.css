@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e8ffe8;
+}
+
+.tree {
+  position: relative;
+  top: -150px;
+  width: 150px;
+  height: 150px;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(30deg);
+  animation: animate 6s linear infinite;
+}
+
+.tree::before {
+  content: "⭐";
+  position: absolute;
+  font-size: 2em;
+  left: calc(50% - 22px);
+  top: -60px;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateX(-20deg) rotateY(360deg);
+  }
+  100% {
+    transform: rotateX(-20deg) rotateY(0deg);
+  }
+}
+
+.tree div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: translateY(calc(60px * var(--j)));
+}
+
+.tree div.top span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #69c069, #77dd77);
+  clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+  transform-origin: bottom;
+  border-bottom: 10px solid #00000019;
+  transform: rotateY(calc(90deg * var(--i))) rotateX(30deg) translateZ(86px);
+}
+
+.tree div.bottom span {
+  position: absolute;
+  top: 260px;
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 100px;
+  background: linear-gradient(90deg, #bb4622, #df7214);
+  /* clip-path: polygon(50% 0, 0% 100%, 100% 100%); */
+  transform-origin: bottom;
+  border-bottom: 10px solid #00000019;
+  transform: rotateY(calc(90deg * var(--i))) translateZ(15px);
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  background: #0004;
+  transform-style: preserve-3d;
+  transform: rotateX(90deg) translateZ(-285px);
+  filter: blur(20px);
+}
